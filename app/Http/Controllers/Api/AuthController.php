@@ -26,12 +26,12 @@ class AuthController extends Controller{
         $user->name=$request->name;
         $user->email=$request->email;
         $user->password=Hash::make($request->password);
-        $user->save();
+        $user->save(); //save database user as name,email,password
 
         // Creating a token without scopes...
         $token = $user->createToken('Blogs')->accessToken;
 
-        return ResponseHelper::success([
+        return ResponseHelper::success([//get response from using responsehelper
             'access_token'=>$token]);
 
    }
@@ -45,8 +45,9 @@ class AuthController extends Controller{
                 'password'=>'required'
             ]
         );
+    //login using attempt to check correct email and password    
     if(auth::attempt(['email'=>$request->email,'password'=>$request->password])){
-            $user= auth::user();
+            $user= auth::user();//get user auth to create user
 
             $token = $user->createToken('Blogs')->accessToken;
 

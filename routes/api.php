@@ -6,6 +6,7 @@ use App\Helpers\ResponseHelper;
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\ProfileController;
 
 
 
@@ -36,3 +37,7 @@ use App\Http\Controllers\Api\AuthController;
 // Registor Route
 Route::post('register',[AuthController::Class,'register']);
 Route::post('login',[AuthController::Class,'login']);
+
+Route::middleware(['auth:api'])->group(function(){//auth api is config under auth.php represent using api
+    Route::get('profile',[ProfileController::class,'profile']);
+});
