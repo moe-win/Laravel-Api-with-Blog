@@ -56,4 +56,11 @@ class AuthController extends Controller{
 
     }    
    }
+
+   //logout feature
+   public function logout(Request $request){
+        $user=auth()->user();
+        $user->token()->revoke();
+        return ResponseHelper::success([],'logout successed');
+   }
 }

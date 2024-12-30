@@ -40,4 +40,5 @@ Route::post('login',[AuthController::Class,'login']);
 
 Route::middleware(['auth:api'])->group(function(){//auth api is config under auth.php represent using api
     Route::get('profile',[ProfileController::class,'profile']);
+    Route::post('logout',[AuthController::class,'logout']);
 });
