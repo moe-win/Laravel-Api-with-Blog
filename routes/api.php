@@ -7,6 +7,7 @@ use App\Helpers\ResponseHelper;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\ProfileController;
+use App\Http\Controllers\Api\CategoriesController;
 
 
 
@@ -41,4 +42,5 @@ Route::post('login',[AuthController::Class,'login']);
 Route::middleware(['auth:api'])->group(function(){//auth api is config under auth.php represent using api
     Route::get('profile',[ProfileController::class,'profile']);
     Route::post('logout',[AuthController::class,'logout']);
+    Route::get('category',[CategoriesController::class,'index']);
 });

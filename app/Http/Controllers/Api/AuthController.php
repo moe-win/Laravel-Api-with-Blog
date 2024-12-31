@@ -59,8 +59,9 @@ class AuthController extends Controller{
 
    //logout feature
    public function logout(Request $request){
-        $user=auth()->user();
-        $user->token()->revoke();
-        return ResponseHelper::success([],'logout successed');
+        // $user=auth()->user();
+        // $user->token()->revoke();
+        auth()->user()->token()->revoke();//token logout by using revoke function
+        return ResponseHelper::success([],'logout successed');//array inside no data and use success pass data
    }
 }
